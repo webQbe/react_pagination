@@ -1,7 +1,7 @@
 /* Pagination Component */
 import React from 'react'
 
-const Pagination = ({ postsPerPage, totalPosts }) => {
+const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
 
     const pageNumbers = [];
 
@@ -27,11 +27,20 @@ const Pagination = ({ postsPerPage, totalPosts }) => {
                 // Loop through pageNumbers and create a <li> for each page
                 pageNumbers.map(number => (
                     <li key={number} className='page-item'>
-                        <a href="!#" className='page-link'>
+
+                        {/* Making Page Numbers Clickable */}
+                        <a onClick={ 
+                                /* Pass paginate() as a prop and call it to update currentPage in App.jsx */
+                                () => paginate(number) // Pass corresponding page number 
+                                } 
+                                
+                            className='page-link' // Bootstrap-style
+                        >
                             { 
-                                number // Display corresponding page number 
+                                number // Display page number 
                             }
                         </a>
+
                     </li>
                 ))
             }

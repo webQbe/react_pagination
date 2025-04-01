@@ -12,7 +12,7 @@ function App() {
   const [posts, setPosts] = useState([]); // Store fetched list of posts
   const [loading, setLoading] = useState(false); // Track whether data is being loaded
   const [currentPage, setCurrentPage] = useState(1); // Store current page number (useful for pagination)
-  const [postsPerPage, setPostsPerPage] = useState(10); //Determine how many posts to display per page.
+  const [postsPerPage] = useState(10); // Keep postsPerPage constant at 10
 
   /* Fetching Data */
   useEffect(() => {
@@ -35,6 +35,9 @@ function App() {
   // Extract 10 posts for the current page
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
 
+  // paginate() updates currentPage when a page number is clicked
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
   return (
     <div className="container mt-5"> {/* Wrap UI inside a Bootstrap-styled div.container */}
             
@@ -44,8 +47,11 @@ function App() {
             {/* Posts.jsx receives and displays only the extracted posts */}
             <Posts posts={currentPosts} loading={loading} />
             
-            {/* postsPerPage and totalPosts are passed as props */}
-            <Pagination postsPerPage={postsPerPage} totalPosts={posts.length} />
+            <Pagination 
+              postsPerPage={postsPerPage} 
+              totalPosts={posts.length}
+              paginate={paginate} // Let child components to modify currentPage
+            />
     </div>
   )
 }
