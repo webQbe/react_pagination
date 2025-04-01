@@ -6,6 +6,7 @@ import
 import axios from 'axios'; // used for making HTTP requests
 import './App.css'; // for styling
 import Posts from './components/Posts'; // Import Posts component 
+import Pagination from './components/Pagination'; // Import Pagination component 
 
 function App() {
   const [posts, setPosts] = useState([]); // Store fetched list of posts
@@ -26,6 +27,7 @@ function App() {
     fetchPosts();
   }, []); // Empty dependency array [] means fetchPosts() runs only on mount
 
+  /* Pagination Calculations */
   // Find the last post index of the current page
   const indexOfLastPost = currentPage * postsPerPage; 
   // Find the first post index of the current page
@@ -41,6 +43,9 @@ function App() {
 
             {/* Posts.jsx receives and displays only the extracted posts */}
             <Posts posts={currentPosts} loading={loading} />
+            
+            {/* postsPerPage and totalPosts are passed as props */}
+            <Pagination postsPerPage={postsPerPage} totalPosts={posts.length} />
     </div>
   )
 }
