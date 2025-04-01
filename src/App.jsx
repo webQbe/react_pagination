@@ -26,8 +26,12 @@ function App() {
     fetchPosts();
   }, []); // Empty dependency array [] means fetchPosts() runs only on mount
 
-  //Log the Data
-  console.log(posts);
+  // Find the last post index of the current page
+  const indexOfLastPost = currentPage * postsPerPage; 
+  // Find the first post index of the current page
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  // Extract 10 posts for the current page
+  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
 
   return (
     <div className="container mt-5"> {/* Wrap UI inside a Bootstrap-styled div.container */}
@@ -35,8 +39,8 @@ function App() {
             {/* Display heading */}
             <h1 className="text-primary mb-3">My Blog</h1>
 
-            {/* Pass posts and loading state as props to <Posts /> component */}
-            <Posts posts={posts} loading={loading} />
+            {/* Posts.jsx receives and displays only the extracted posts */}
+            <Posts posts={currentPosts} loading={loading} />
     </div>
   )
 }
