@@ -1,9 +1,11 @@
+/* Main Component */
 import 
-  React, { useState, //  used to manage state
+  React, { useState, // used to manage state
            useEffect // used for side effects
           } from 'react';
 import axios from 'axios'; // used for making HTTP requests
 import './App.css'; // for styling
+import Posts from './components/Posts'; // Import Posts component 
 
 function App() {
   const [posts, setPosts] = useState([]); // Store fetched list of posts
@@ -28,8 +30,13 @@ function App() {
   console.log(posts);
 
   return (
-    <div className="container">
-            <h1>App</h1>
+    <div className="container mt-5"> {/* Wrap UI inside a Bootstrap-styled div.container */}
+            
+            {/* Display heading */}
+            <h1 className="text-primary mb-3">My Blog</h1>
+
+            {/* Pass posts and loading state as props to <Posts /> component */}
+            <Posts posts={posts} loading={loading} />
     </div>
   )
 }
