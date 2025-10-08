@@ -1,5 +1,7 @@
 # React Frontend Pagination
+This repo is an adaptation of [Simple Frontend Pagination | React](https://www.youtube.com/watch?v=IYCa1F-OWmk&list=PLillGF-RfqbY3c2r0htQyVbDJJoBFE6Rb&index=9&pp=iAQB) by Brad Traversy. 
 
+I followed the tutorial to learn followings:
 - Fetching posts from *JSONPlaceholder API* to output on our React app
 - Displaying 5-10 posts per page
 - Showing pagination numbers at the bottom
@@ -37,3 +39,8 @@
     ```
 
 
+## Credits
+Original tutorial: [Simple Frontend Pagination | React](https://www.youtube.com/watch?v=IYCa1F-OWmk&list=PLillGF-RfqbY3c2r0htQyVbDJJoBFE6Rb&index=9&pp=iAQB) — Brad Traversy.
+
+## License
+MIT License
